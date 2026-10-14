@@ -6,6 +6,11 @@
         "error": {
             "device_not_registered": "Device is not registered in Tuya cloud",
             "invalid_auth": "Invalid authentication",
+            "invalid_category": "Category is required",
+            "invalid_device_id": "Device ID is required",
+            "invalid_local_key": "Local key looks invalid (at least 6 characters)",
+            "invalid_product_id": "Product ID is required",
+            "invalid_uuid": "UUID looks invalid",
             "login_error": "Login error ({code}): {msg}"
         },
         "flow_title": "{name}",
@@ -20,12 +25,34 @@
                 "data": {
                     "access_id": "Tuya IoT Access ID",
                     "access_secret": "Tuya IoT Access Secret",
-                    "sec_key": "Tuya BLE SecKey (optional)",
                     "country_code": "Country",
                     "password": "Password",
+                    "sec_key": "Tuya BLE SecKey (optional)",
                     "username": "Account"
                 },
                 "description": "Tuya BLE requires obtaining encryption key from Tuya cloud. Almost all devices only need to access the cloud once during setup.\n\nRefer to documentation of Tuya integration to retrieve the cloud credentials {url}\n\nEnter your Tuya credentials."
+            },
+            "manual": {
+                "title": "Manual credentials",
+                "description": "Enter the credentials of the Tuya BLE device. They can be copied from a previous setup or obtained from the Tuya app account. The device must not be connected to a phone or a Tuya gateway while Home Assistant talks to it.",
+                "data": {
+                    "address": "Tuya BLE device",
+                    "category": "Category (e.g. ms for locks)",
+                    "device_id": "Device ID",
+                    "device_name": "Device name (optional)",
+                    "local_key": "Local key",
+                    "product_id": "Product ID (e.g. 7a4xvbtt)",
+                    "sec_key": "Security key (newer BLE devices only, optional)",
+                    "uuid": "UUID (e.g. tuya2a3142...)"
+                }
+            },
+            "user": {
+                "title": "Tuya BLE",
+                "description": "How should the device credentials (device ID, UUID, local key) be obtained?",
+                "menu_options": {
+                    "login": "Fetch from the Tuya IoT cloud (recommended when your IoT project works)",
+                    "manual": "Enter manually (no cloud access needed)"
+                }
             }
         }
     },
